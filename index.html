@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Giriş Yap</title>
     <style>
         body {
             display: flex;
@@ -58,7 +58,7 @@
 <body>
     <div class="container">
         <h2>Şifreyi Giriniz</h2>
-        <input type="password" id="password" placeholder="şifreyi giriniz">
+        <input type="password" id="password" placeholder="Şifreyi giriniz" onkeypress="handleKeyPress(event)">
         <button onclick="checkPassword()">Gönder</button>
         <p id="error">Yanlış Şifre, Tekrar deneyin.</p>
     </div>
@@ -69,6 +69,13 @@
                 window.location.href = 'gallery.html';
             } else {
                 document.getElementById('error').style.display = 'block';
+                document.getElementById('password').value = ''; // Şifre alanını temizle
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                checkPassword(); // Enter tuşuna basıldığında şifreyi kontrol et
             }
         }
     </script>
