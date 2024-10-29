@@ -37,6 +37,29 @@
             width: 100px; /* Logoların genişliğini ayarlayın */
             height: auto;
         }
+        /* Tema stilleri */
+        .color-picker {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Yarı saydam arka plan */
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .color-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 5px 0;
+            cursor: pointer;
+            border: 2px solid transparent; /* Seçili değilken kenar rengi */
+        }
+        .color-circle:hover {
+            border: 2px solid #000; /* Hover durumunda kenar rengi */
+        }
         /* Büyütme efekti için stil */
         .modal {
             display: none; /* Başlangıçta gizli */
@@ -124,6 +147,10 @@
     </div>
 
     <script>
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color; // Arka plan rengini değiştir
+        }
+
         function openModal(src) {
             const modal = document.getElementById('modal');
             const modalImg = document.getElementById('modal-img');
@@ -144,13 +171,4 @@
             }, 500); // Animasyon süresince bekle
         }
 
-        // Modal dışına tıkladığında kapatma
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target == modal) {
-                closeModal(); // Modalı gizle
-            }
-        }
-    </script>
-</body>
-</html>
+        // Modal dışına t
