@@ -25,7 +25,7 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer; /* Tıklanabilirlik için işaretçi değişimi */
+            cursor: pointer; /* Tıklanabilir görünüm */
         }
         .logos {
             display: flex;
@@ -50,95 +50,71 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .color-circle {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin: 5px 0;
-            cursor: pointer;
-            border: 2px solid transparent; /* Seçili değilken kenar rengi */
-        }
         .color-circle:hover {
             border: 2px solid #000; /* Hover durumunda kenar rengi */
         }
-        /* Büyütme efekti için stil */
+        /* Büyütülen resim stili */
         .modal {
-            display: none; /* Başlangıçta gizli */
+            display: none; /* Varsayılan olarak gizli */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Yarı saydam arka plan */
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
-            z-index: 1000; /* Diğer elemanların üzerinde görünmesi için */
-            transition: opacity 0.5s ease; /* Opasite geçişi */
+            z-index: 1000; /* Diğer öğelerin üstünde göster */
         }
         .modal img {
             max-width: 90%;
             max-height: 90%;
-            animation: grow 0.5s forwards; /* Büyüme animasyonu */
-        }
-        @keyframes grow {
-            from {
-                transform: scale(0);
-            }
-            to {
-                transform: scale(1);
-            }
+            border-radius: 8px;
+            transition: transform 0.3s ease; /* Animasyon */
         }
         .close {
             position: absolute;
             top: 20px;
-            right: 20px;
-            background: red;
+            right: 30px;
             color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            font-size: 30px;
             cursor: pointer;
-            font-size: 20px;
-        }
-        .close:hover {
-            background: darkred; /* Kapatma butonu hover efekti */
         }
     </style>
 </head>
 <body>
-    <h1>Mia ve Miko</h1>
-    <div class="logos">
         <img src="miya ve miko.png" alt="Logo 1">
     </div>
     <div class="gallery">
-        <img src="IMG-20240731-WA0004.jpg" alt="Kedi 1" onclick="openModal(this.src)">
-        <img src="IMG-20240731-WA0005.jpg" alt="Kedi 2" onclick="openModal(this.src)">
-        <img src="IMG-20241013-WA0001.jpg" alt="Kedi 3" onclick="openModal(this.src)">
-        <img src="IMG-20241013-WA0002.jpg" alt="Kedi 4" onclick="openModal(this.src)">
-        <img src="IMG-20241013-WA0003.jpg" alt="Kedi 5" onclick="openModal(this.src)">
-        <img src="IMG-20241013-WA0006.jpg" alt="Kedi 6" onclick="openModal(this.src)">
-        <img src="IMG-20241013-WA0007.jpg" alt="Kedi 7" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0002.jpg" alt="Kedi 8" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0003.jpg" alt="Kedi 9" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0004.jpg" alt="Kedi 10" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0005.jpg" alt="Kedi 11" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0006.jpg" alt="Kedi 12" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0007.jpg" alt="Kedi 13" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0008.jpg" alt="Kedi 14" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0009.jpg" alt="Kedi 15" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0010.jpg" alt="Kedi 16" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0011.jpg" alt="Kedi 17" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0012.jpg" alt="Kedi 18" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0013.jpg" alt="Kedi 19" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0014.jpg" alt="Kedi 20" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0015.jpg" alt="Kedi 21" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0016.jpg" alt="Kedi 22" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0017.jpg" alt="Kedi 23" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0018.jpg" alt="Kedi 24" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0019.jpg" alt="Kedi 25" onclick="openModal(this.src)">
-        <img src="IMG-20241029-WA0020.jpg" alt="Kedi 26" onclick="openModal(this.src)">
+        
+        <img src="IMG-20240731-WA0004.jpg" alt="Kedi 1" onclick="openModal(this)">
+        <img src="IMG-20240731-WA0005.jpg" alt="Kedi 2" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0001.jpg" alt="Kedi 3" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0002.jpg" alt="Kedi 4" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0003.jpg" alt="Kedi 5" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0006.jpg" alt="Kedi 6" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0007.jpg" alt="Kedi 7" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0002.jpg" alt="Kedi 8" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0003.jpg" alt="Kedi 9" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0004.jpg" alt="Kedi 10" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0005.jpg" alt="Kedi 11" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0006.jpg" alt="Kedi 12" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0007.jpg" alt="Kedi 13" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0008.jpg" alt="Kedi 14" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0009.jpg" alt="Kedi 15" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0010.jpg" alt="Kedi 16" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0011.jpg" alt="Kedi 17" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0012.jpg" alt="Kedi 18" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0013.jpg" alt="Kedi 19" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0014.jpg" alt="Kedi 20" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0015.jpg" alt="Kedi 21" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0016.jpg" alt="Kedi 22" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0017.jpg" alt="Kedi 23" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0018.jpg" alt="Kedi 24" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0019.jpg" alt="Kedi 25" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0020.jpg" alt="Kedi 26" onclick="openModal(this)">
     </div>
-
+    
     <div class="color-picker">
         <div class="color-circle" style="background-color: #000000;" onclick="changeBackgroundColor('#000000')"></div>
         <div class="color-circle" style="background-color: #0000c8;" onclick="changeBackgroundColor('#0000c8')"></div>
@@ -146,23 +122,29 @@
         <div class="color-circle" style="background-color: #808080;" onclick="changeBackgroundColor('#808080')"></div>
     </div>
 
-    <!-- Modal için alan -->
-    <div class="modal" id="modal" onclick="closeModal()">
-        <button class="close" onclick="closeModal()">×</button>
-        <img id="modal-img" src="" alt="Büyütülmüş Kedi Resmi">
+    <!-- Modal yapı -->
+    <div class="modal" id="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Büyütülmüş Kedi Resmi">
     </div>
-
     <script>
+        function openModal(img) {
+            const modal = document.getElementById("modal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex"; // Modali aç
+            modalImage.src = img.src; // Resmi ayarla
+            modalImage.style.transform = 'scale(1.0)'; // Başlangıç ölçeği
+            setTimeout(() => {
+                modalImage.style.transform = 'scale(1.05)'; // Küçük bir büyütme efekti
+            }, 10);
+        }
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none"; // Modali kapat
+        }
         function changeBackgroundColor(color) {
             document.body.style.backgroundColor = color; // Arka plan rengini değiştir
         }
-
-        function openModal(src) {
-            const modal = document.getElementById('modal');
-            const modalImg = document.getElementById('modal-img');
-            modal.style.display = 'flex'; // Modal görünür hale getir
-            modalImg.src = src; // Resmi modalda göster
-            modal.style.opacity = 1; // Opasiteyi ayarla
-        }
-
-        function
+    </script>
+</body>
+</html>
