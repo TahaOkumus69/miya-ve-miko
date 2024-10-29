@@ -37,29 +37,6 @@
             width: 100px; /* Logoların genişliğini ayarlayın */
             height: auto;
         }
-        /* Tema stilleri */
-        .color-picker {
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            right: 20px;
-            top: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Yarı saydam arka plan */
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .color-circle {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin: 5px 0;
-            cursor: pointer;
-            border: 2px solid transparent; /* Seçili değilken kenar rengi */
-        }
-        .color-circle:hover {
-            border: 2px solid #000; /* Hover durumunda kenar rengi */
-        }
         /* Büyütme efekti için stil */
         .modal {
             display: none; /* Başlangıçta gizli */
@@ -78,12 +55,13 @@
             max-width: 90%;
             max-height: 90%;
             animation: grow 0.5s forwards; /* Büyüme animasyonu */
+            transform: scale(0); /* Başlangıçta görünmez */
         }
         @keyframes grow {
-            from {
+            0% {
                 transform: scale(0);
             }
-            to {
+            100% {
                 transform: scale(1);
             }
         }
@@ -139,30 +117,40 @@
         <img src="IMG-20241029-WA0020.jpg" alt="Kedi 26" onclick="openModal(this.src)">
     </div>
 
-    <div class="color-picker">
-        <div class="color-circle" style="background-color: #000000;" onclick="changeBackgroundColor('#000000')"></div>
-        <div class="color-circle" style="background-color: #0000c8;" onclick="changeBackgroundColor('#0000c8')"></div>
-        <div class="color-circle" style="background-color: #ffffff;" onclick="changeBackgroundColor('#ffffff')"></div>
-        <div class="color-circle" style="background-color: #808080;" onclick="changeBackgroundColor('#808080')"></div>
-    </div>
-
     <!-- Modal için alan -->
-    <div class="modal" id="modal" onclick="closeModal()">
+    <div class="modal" id="modal">
         <button class="close" onclick="closeModal()">×</button>
         <img id="modal-img" src="" alt="Büyütülmüş Kedi Resmi">
     </div>
 
     <script>
-        function changeBackgroundColor(color) {
-            document.body.style.backgroundColor = color; // Arka plan rengini değiştir
-        }
-
         function openModal(src) {
             const modal = document.getElementById('modal');
             const modalImg = document.getElementById('modal-img');
             modal.style.display = 'flex'; // Modal görünür hale getir
             modalImg.src = src; // Resmi modalda göster
-            modal.style.opacity = 1; // Opasiteyi ayarla
+            modalImg.style.transform = 'scale(0)'; // Başlangıçta görünmez
+            setTimeout(() => {
+                modalImg.style.transform = 'scale(1)'; // Resmi büyüt
+            }, 10); // Kısa bir gecikme ile
         }
 
-        function
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.style.transform = 'scale(0)'; // Resmi küçült
+            setTimeout(() => {
+                modal.style.display = 'none'; // Modalı gizle
+            }, 500); // Animasyon süresince bekle
+        }
+
+        // Modal dışına tıkladığında kapatma
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal(); // Modalı gizle
+            }
+        }
+    </script>
+</body>
+</html>
