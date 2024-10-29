@@ -78,13 +78,12 @@
             max-width: 90%;
             max-height: 90%;
             animation: grow 0.5s forwards; /* Büyüme animasyonu */
-            transform: scale(0); /* Başlangıçta görünmez */
         }
         @keyframes grow {
-            0% {
+            from {
                 transform: scale(0);
             }
-            100% {
+            to {
                 transform: scale(1);
             }
         }
@@ -140,8 +139,15 @@
         <img src="IMG-20241029-WA0020.jpg" alt="Kedi 26" onclick="openModal(this.src)">
     </div>
 
+    <div class="color-picker">
+        <div class="color-circle" style="background-color: #000000;" onclick="changeBackgroundColor('#000000')"></div>
+        <div class="color-circle" style="background-color: #0000c8;" onclick="changeBackgroundColor('#0000c8')"></div>
+        <div class="color-circle" style="background-color: #ffffff;" onclick="changeBackgroundColor('#ffffff')"></div>
+        <div class="color-circle" style="background-color: #808080;" onclick="changeBackgroundColor('#808080')"></div>
+    </div>
+
     <!-- Modal için alan -->
-    <div class="modal" id="modal">
+    <div class="modal" id="modal" onclick="closeModal()">
         <button class="close" onclick="closeModal()">×</button>
         <img id="modal-img" src="" alt="Büyütülmüş Kedi Resmi">
     </div>
@@ -156,19 +162,7 @@
             const modalImg = document.getElementById('modal-img');
             modal.style.display = 'flex'; // Modal görünür hale getir
             modalImg.src = src; // Resmi modalda göster
-            modalImg.style.transform = 'scale(0)'; // Başlangıçta görünmez
-            setTimeout(() => {
-                modalImg.style.transform = 'scale(1)'; // Resmi büyüt
-            }, 10); // Kısa bir gecikme ile
+            modal.style.opacity = 1; // Opasiteyi ayarla
         }
 
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            const modalImg = document.getElementById('modal-img');
-            modalImg.style.transform = 'scale(0)'; // Resmi küçült
-            setTimeout(() => {
-                modal.style.display = 'none'; // Modalı gizle
-            }, 500); // Animasyon süresince bekle
-        }
-
-        // Modal dışına t
+        function
