@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri</title>
+    <title>Kediler</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
             background-color: #0000c8; /* Varsayılan arka plan rengi */
+            text-align: center;
             transition: background-color 0.3s ease; /* Arka plan rengi geçişi */
+        }
+        h1 {
+            color: red; /* Başlık rengini kırmızı yapar */
         }
         .gallery {
             display: grid;
@@ -27,6 +26,16 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .logos img {
+            width: 100px; /* Logoların genişliğini ayarlayın */
+            height: auto;
+        }
         /* Tema stilleri */
         .color-picker {
             display: flex;
@@ -34,7 +43,7 @@
             position: fixed;
             right: 20px;
             top: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Arka planda beyaz yarı saydam alan */
+            background-color: rgba(255, 255, 255, 0.8); /* Yarı saydam arka plan */
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -53,19 +62,50 @@
     </style>
 </head>
 <body>
+    <h1>Mia ve Miko</h1>
+    <div class="logos">
+        <img src="miya ve miko.png" alt="Logo 1">
+    </div>
     <div class="gallery">
-        <img src="IMG-20240731-WA0004.jpg">
-        <img src="IMG-20240731-WA0005.jpg">
-        <img src="IMG-20241013-WA0001.jpg">
-        <img src="IMG-20241013-WA0002.jpg">
-        <img src="IMG-20241013-WA0003.jpg">
-        <img src="IMG-20241013-WA0006.jpg">
-        <img src="IMG-20241013-WA0007.jpg">
-        <img src="IMG-20241029-WA0002.jpg">
-        <img src="IMG-20241029-WA0003.jpg">
-        <img src="IMG-20241029-WA0004.jpg">
-        <img src="IMG-20241029-WA0005.jpg">
-        <img src="IMG-20241029-WA0006.jpg">
-        <img src="IMG-20241029-WA0007.jpg">
-        <img src="IMG-20241029-WA0008.jpg">
-        <img
+        <img src="IMG-20240731-WA0004.jpg" alt="Kedi 1">
+        <img src="IMG-20240731-WA0005.jpg" alt="Kedi 2">
+        <img src="IMG-20241013-WA0001.jpg" alt="Kedi 3">
+        <img src="IMG-20241013-WA0002.jpg" alt="Kedi 4">
+        <img src="IMG-20241013-WA0003.jpg" alt="Kedi 5">
+        <img src="IMG-20241013-WA0006.jpg" alt="Kedi 6">
+        <img src="IMG-20241013-WA0007.jpg" alt="Kedi 7">
+        <img src="IMG-20241029-WA0002.jpg" alt="Kedi 8">
+        <img src="IMG-20241029-WA0003.jpg" alt="Kedi 9">
+        <img src="IMG-20241029-WA0004.jpg" alt="Kedi 10">
+        <img src="IMG-20241029-WA0005.jpg" alt="Kedi 11">
+        <img src="IMG-20241029-WA0006.jpg" alt="Kedi 12">
+        <img src="IMG-20241029-WA0007.jpg" alt="Kedi 13">
+        <img src="IMG-20241029-WA0008.jpg" alt="Kedi 14">
+        <img src="IMG-20241029-WA0009.jpg" alt="Kedi 15">
+        <img src="IMG-20241029-WA0010.jpg" alt="Kedi 16">
+        <img src="IMG-20241029-WA0011.jpg" alt="Kedi 17">
+        <img src="IMG-20241029-WA0012.jpg" alt="Kedi 18">
+        <img src="IMG-20241029-WA0013.jpg" alt="Kedi 19">
+        <img src="IMG-20241029-WA0014.jpg" alt="Kedi 20">
+        <img src="IMG-20241029-WA0015.jpg" alt="Kedi 21">
+        <img src="IMG-20241029-WA0016.jpg" alt="Kedi 22">
+        <img src="IMG-20241029-WA0017.jpg" alt="Kedi 23">
+        <img src="IMG-20241029-WA0018.jpg" alt="Kedi 24">
+        <img src="IMG-20241029-WA0019.jpg" alt="Kedi 25">
+        <img src="IMG-20241029-WA0020.jpg" alt="Kedi 26">
+    </div>
+    
+    <div class="color-picker">
+        <div class="color-circle" style="background-color: #000000;" onclick="changeBackgroundColor('#000000')"></div>
+        <div class="color-circle" style="background-color: #0000c8;" onclick="changeBackgroundColor('#0000c8')"></div>
+        <div class="color-circle" style="background-color: #ffffff;" onclick="changeBackgroundColor('#ffffff')"></div>
+        <div class="color-circle" style="background-color: #808080;" onclick="changeBackgroundColor('#808080')"></div>
+    </div>
+
+    <script>
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color; // Arka plan rengini değiştir
+        }
+    </script>
+</body>
+</html>
