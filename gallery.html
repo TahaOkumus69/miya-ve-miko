@@ -25,6 +25,11 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* İşaretçi gösterimi için */
+            transition: transform 0.3s; /* Büyütme animasyonu */
+        }
+        img:hover {
+            transform: scale(1.05); /* Hover durumunda hafif büyütme */
         }
         .logos {
             display: flex;
@@ -58,7 +63,42 @@
         }
         .color-circle:hover {
             border: 2px solid #000; /* Hover durumunda kenar rengi */
-        }     </style>
+        }
+
+        /* Modal Stilleri */
+        .modal {
+            display: none; /* Başlangıçta gizli */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Yarı saydam arka plan */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            transform: scale(0); /* Başlangıçta büyütülmemiş */
+            animation: grow 0.3s forwards; /* Büyüme animasyonu */
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @keyframes grow {
+            to {
+                transform: scale(1); /* Büyüme bitişi */
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Miya Ve Miko</h1>
@@ -66,7 +106,7 @@
         <img src="miya ve miko.png" alt="Logo 1">
     </div>
     <div class="gallery">
-         <img src="IMG-20240731-WA0004.jpg" alt="Kedi 1" onclick="openModal(this)">
+        <img src="IMG-20240731-WA0004.jpg" alt="Kedi 1" onclick="openModal(this)">
         <img src="IMG-20240731-WA0005.jpg" alt="Kedi 2" onclick="openModal(this)">
         <img src="IMG-20241013-WA0001.jpg" alt="Kedi 3" onclick="openModal(this)">
         <img src="IMG-20241013-WA0002.jpg" alt="Kedi 4" onclick="openModal(this)">
@@ -100,7 +140,25 @@
         <div class="color-circle" style="background-color: #808080;" onclick="changeBackgroundColor('#808080')"></div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal" id="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Büyütülmüş Kedi">
+    </div>
+
     <script>
+        function openModal(image) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = image.src; // Modalda gösterilecek resmi ayarla
+            modal.style.display = 'flex'; // Modali göster
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none'; // Modali gizle
+        }
+
         function changeBackgroundColor(color) {
             document.body.style.backgroundColor = color; // Arka plan rengini değiştir
         }
