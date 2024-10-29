@@ -7,9 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #0000c8; /* Varsayılan arka plan rengi */
+            background-color: #0000c8;
             text-align: center;
-            transition: background-color 0.3s ease; /* Arka plan rengi geçişi */
         }
         h1 {
             color: red; /* Başlık rengini kırmızı yapar */
@@ -25,6 +24,7 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Tıklanabilir görünüm için */
         }
         .logos {
             display: flex;
@@ -36,28 +36,31 @@
             width: 100px; /* Logoların genişliğini ayarlayın */
             height: auto;
         }
-        /* Tema stilleri */
-        .color-picker {
-            display: flex;
-            flex-direction: column;
+        /* Modal Stilleri */
+        .modal {
+            display: none; /* Varsayılan olarak gizli */
             position: fixed;
-            right: 20px;
-            top: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Yarı saydam arka plan */
-            padding: 10px;
+            z-index: 1000; /* Üstte görünmesi için */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Yarı saydam arka plan */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .color-circle {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin: 5px 0;
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 24px;
             cursor: pointer;
-            border: 2px solid transparent; /* Seçili değilken kenar rengi */
-        }
-        .color-circle:hover {
-            border: 2px solid #000; /* Hover durumunda kenar rengi */
         }
     </style>
 </head>
@@ -67,44 +70,59 @@
         <img src="miya ve miko.png" alt="Logo 1">
     </div>
     <div class="gallery">
-        <img src="IMG-20240731-WA0004.jpg" alt="Kedi 1">
-        <img src="IMG-20240731-WA0005.jpg" alt="Kedi 2">
-        <img src="IMG-20241013-WA0001.jpg" alt="Kedi 3">
-        <img src="IMG-20241013-WA0002.jpg" alt="Kedi 4">
-        <img src="IMG-20241013-WA0003.jpg" alt="Kedi 5">
-        <img src="IMG-20241013-WA0006.jpg" alt="Kedi 6">
-        <img src="IMG-20241013-WA0007.jpg" alt="Kedi 7">
-        <img src="IMG-20241029-WA0002.jpg" alt="Kedi 8">
-        <img src="IMG-20241029-WA0003.jpg" alt="Kedi 9">
-        <img src="IMG-20241029-WA0004.jpg" alt="Kedi 10">
-        <img src="IMG-20241029-WA0005.jpg" alt="Kedi 11">
-        <img src="IMG-20241029-WA0006.jpg" alt="Kedi 12">
-        <img src="IMG-20241029-WA0007.jpg" alt="Kedi 13">
-        <img src="IMG-20241029-WA0008.jpg" alt="Kedi 14">
-        <img src="IMG-20241029-WA0009.jpg" alt="Kedi 15">
-        <img src="IMG-20241029-WA0010.jpg" alt="Kedi 16">
-        <img src="IMG-20241029-WA0011.jpg" alt="Kedi 17">
-        <img src="IMG-20241029-WA0012.jpg" alt="Kedi 18">
-        <img src="IMG-20241029-WA0013.jpg" alt="Kedi 19">
-        <img src="IMG-20241029-WA0014.jpg" alt="Kedi 20">
-        <img src="IMG-20241029-WA0015.jpg" alt="Kedi 21">
-        <img src="IMG-20241029-WA0016.jpg" alt="Kedi 22">
-        <img src="IMG-20241029-WA0017.jpg" alt="Kedi 23">
-        <img src="IMG-20241029-WA0018.jpg" alt="Kedi 24">
-        <img src="IMG-20241029-WA0019.jpg" alt="Kedi 25">
-        <img src="IMG-20241029-WA0020.jpg" alt="Kedi 26">
+        <img src="IMG-20240731-WA0004.jpg" onclick="openModal(this)">
+        <img src="IMG-20240731-WA0005.jpg" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0001.jpg" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0002.jpg" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0003.jpg" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0006.jpg" onclick="openModal(this)">
+        <img src="IMG-20241013-WA0007.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0002.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0003.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0004.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0005.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0006.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0007.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0008.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0009.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0010.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0011.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0012.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0013.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0014.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0015.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0016.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0017.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0018.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0019.jpg" onclick="openModal(this)">
+        <img src="IMG-20241029-WA0020.jpg" onclick="openModal(this)">
     </div>
-    
-    <div class="color-picker">
-        <div class="color-circle" style="background-color: #000000;" onclick="changeBackgroundColor('#000000')"></div>
-        <div class="color-circle" style="background-color: #0000c8;" onclick="changeBackgroundColor('#0000c8')"></div>
-        <div class="color-circle" style="background-color: #ffffff;" onclick="changeBackgroundColor('#ffffff')"></div>
-        <div class="color-circle" style="background-color: #808080;" onclick="changeBackgroundColor('#808080')"></div>
+
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
     <script>
-        function changeBackgroundColor(color) {
-            document.body.style.backgroundColor = color; // Arka plan rengini değiştir
+        function openModal(image) {
+            const modal = document.getElementById("myModal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex"; // Modalı göster
+            modalImage.src = image.src; // Modalda gösterilecek resmi ayarla
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none"; // Modalı gizle
+        }
+
+        // Modal dışına tıkladığında kapatma
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none"; // Modalı gizle
+            }
         }
     </script>
 </body>
