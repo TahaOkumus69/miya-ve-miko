@@ -10,9 +10,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #0000c8;
+            background-color: #0000c8; /* Varsayılan arka plan rengi */
             font-family: Arial, sans-serif;
             margin: 0;
+            transition: background-color 0.3s ease; /* Arka plan rengi geçişi */
         }
         .container {
             text-align: center;
@@ -53,6 +54,29 @@
             display: none;
             margin-top: 10px;
         }
+        /* Tema stilleri */
+        .color-picker {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Yarı saydam arka plan */
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .color-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 5px 0;
+            cursor: pointer;
+            border: 2px solid transparent; /* Seçili değilken kenar rengi */
+        }
+        .color-circle:hover {
+            border: 2px solid #000; /* Hover durumunda kenar rengi */
+        }
     </style>
 </head>
 <body>
@@ -62,6 +86,14 @@
         <button onclick="checkPassword()">Gönder</button>
         <p id="error">Yanlış Şifre, Tekrar deneyin.</p>
     </div>
+    
+    <div class="color-picker">
+        <div class="color-circle" style="background-color: #000000;" onclick="changeBackgroundColor('#000000')"></div>
+        <div class="color-circle" style="background-color: #0000c8;" onclick="changeBackgroundColor('#0000c8')"></div>
+        <div class="color-circle" style="background-color: #ffffff;" onclick="changeBackgroundColor('#ffffff')"></div>
+        <div class="color-circle" style="background-color: #808080;" onclick="changeBackgroundColor('#808080')"></div>
+    </div>
+
     <script>
         function checkPassword() {
             const password = document.getElementById('password').value;
@@ -77,6 +109,10 @@
             if (event.key === 'Enter') {
                 checkPassword(); // Enter tuşuna basıldığında şifreyi kontrol et
             }
+        }
+
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color; // Arka plan rengini değiştir
         }
     </script>
 </body>
