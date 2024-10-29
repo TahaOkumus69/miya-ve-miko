@@ -50,9 +50,11 @@
             align-items: center;
         }
         .modal img {
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 60%; /* Resmin büyüme boyutu */
+            max-height: 80%; /* Resmin yüksekliği */
             border-radius: 8px;
+            transform: scale(0); /* Başlangıçta görünmez */
+            animation: zoomIn 0.5s forwards; /* Animasyon */
         }
         .close {
             position: absolute;
@@ -61,6 +63,16 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
+        }
+
+        /* Animasyon tanımı */
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
