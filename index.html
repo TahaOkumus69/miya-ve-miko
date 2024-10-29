@@ -43,13 +43,13 @@
         <h2>Şifreyi Giriniz</h2>
         <input type="password" id="password" placeholder="şifreyi giriniz">
         <button onclick="checkPassword()">Gönder</button>
-        <p id="error" style="color:red; display:none;">Incorrect password, try again.</p>
+        <p id="error" style="color:red; display:none;">Yanlış Şifre, Tekrar deneyin .</p>
     </div>
     <script>
         function checkPassword() {
             const password = document.getElementById('password').value;
             if (password === '6969') {
-                window.location.href = 'gallery.html';
+                window.location.href = 'kedi.html';
             } else {
                 document.getElementById('error').style.display = 'block';
             }
